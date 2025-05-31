@@ -14,7 +14,9 @@
   <button onclick="search()">🔍 Пошук</button>
 
   <p id="result-name"></p>
+  <img id="cover" src="" alt="Обкладинка треку" style="max-width: 300px; margin-top: 10px; display: none;">
   <audio id="player" controls></audio>
+
 
   <script>
     async function search() {
@@ -32,14 +34,24 @@
         document.body.removeChild(script);
 
         if (data.data.length > 0) {
-          const track = data.data[0]; // беремо перший результат
+          const track = data.data[0];
           document.getElementById("result-name").innerText = track.title + " — " + track.artist.name;
+
           const player = document.getElementById("player");
           player.src = track.preview;
           player.play();
+
+          const cover = document.getElementById("cover");
+          cover.src = track.album.cover_medium;
+          cover.style.display = 'block';
         } else {
           document.getElementById("result-name").innerText = "Нічого не знайдено 😢";
+
+          const cover = document.getElementById("cover");
+          cover.style.display = 'none';
+          cover.src = '';
         }
+
       };
 
       script.src = url + `&callback=${callbackName}`;
