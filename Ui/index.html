@@ -5,59 +5,23 @@
   <meta charset="UTF-8">
   <title>Lapti Music</title>
   <link rel="stylesheet" href="style.css">
+  <script src="../scripts/play.js" defer></script>
+  <script src="../scripts/suggestions.js" defer></script>
 </head>
 
 <body>
   <h1>Lapti Music</h1>
 
-  <input id="query" type="text" placeholder="Введи назву пісні" />
+  <div style="position: relative; max-width: 300px;">
+    <input id="query" type="text" placeholder="Введи назву пісні" autocomplete="off" />
+    <div id="suggestions" style="display:none;"></div>
+  </div>
   <button onclick="search()">🔍 Пошук</button>
 
   <p id="result-name"></p>
   <img id="cover" src="" alt="Обкладинка треку" style="max-width: 300px; margin-top: 10px; display: none;">
   <audio id="player" controls></audio>
-
-
-  <script>
-    async function search() {
-      const query = document.getElementById("query").value;
-      if (!query) return;
-
-      const url = `https://api.deezer.com/search?q=${encodeURIComponent(query)}&output=jsonp`;
-
-      // Deezer API працює тільки через JSONP
-      const script = document.createElement('script');
-      const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-
-      window[callbackName] = function (data) {
-        delete window[callbackName];
-        document.body.removeChild(script);
-
-        if (data.data.length > 0) {
-          const track = data.data[0];
-          document.getElementById("result-name").innerText = track.title + " — " + track.artist.name;
-
-          const player = document.getElementById("player");
-          player.src = track.preview;
-          player.play();
-
-          const cover = document.getElementById("cover");
-          cover.src = track.album.cover_medium;
-          cover.style.display = 'block';
-        } else {
-          document.getElementById("result-name").innerText = "Нічого не знайдено 😢";
-
-          const cover = document.getElementById("cover");
-          cover.style.display = 'none';
-          cover.src = '';
-        }
-
-      };
-
-      script.src = url + `&callback=${callbackName}`;
-      document.body.appendChild(script);
-    }
-  </script>
+  
 </body>
 
 </html>
