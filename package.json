@@ -1,7 +1,7 @@
 {
   "name": "lapti_music",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "src/main/main.js",
   "scripts": {
     "start": "electron ."
   },

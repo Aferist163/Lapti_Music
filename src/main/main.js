@@ -12,7 +12,7 @@ function createWindow () {
 
   //win.setMenu(null);
 
-  win.loadFile('Ui/index.html');
+  win.loadFile(path.join(__dirname, '../App/Ui/index.html'));
 }
 
 app.whenReady().then(createWindow);
