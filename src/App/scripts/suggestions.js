@@ -32,13 +32,35 @@ input.addEventListener('input', function () {
     suggestions.innerHTML = '';
     data.data.forEach(track => {
       const div = document.createElement('div');
-      div.textContent = track.artist.name + ' — ' + track.title;
+      div.style.display = 'flex';
+      div.style.alignItems = 'center';
+      div.style.gap = '10px'; // відстань між картинкою і текстом
+      div.style.padding = '10px';
+      div.style.cursor = 'pointer';
+
+      // Картинка обкладинки
+      const img = document.createElement('img');
+      img.src = track.album.cover_small;
+      img.style.width = '50px';
+      img.style.height = '50px';
+      img.style.borderRadius = '8px';
+
+      // Текст треку
+      const text = document.createElement('span');
+      text.textContent = `${track.artist.name} — ${track.title}`;
+      text.style.color = 'white';
+
+      div.appendChild(img);
+      div.appendChild(text);
+
       div.onclick = () => {
         selectTrack(track);
         suggestions.style.display = 'none';
       };
+
       suggestions.appendChild(div);
     });
+
     suggestions.style.display = 'block';
   };
 
@@ -62,3 +84,16 @@ function selectTrack(track) {
 
   input.value = track.title;
 }
+
+input.addEventListener('blur', function () {
+  setTimeout(() => {
+    suggestions.style.display = 'none';
+  }, 100); 
+});
+
+input.addEventListener('focus', function () {
+  const query = input.value.trim();
+  if (query && suggestions.children.length > 0) {
+    suggestions.style.display = 'block';
+  }
+});

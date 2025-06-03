@@ -21,7 +21,7 @@ async function search() {
       player.play();
 
       const cover = document.getElementById("cover");
-      cover.src = track.album.cover_medium;
+      cover.src = track.album.cover_high;
       cover.style.display = 'block';
     } else {
       document.getElementById("track_name").innerText = "Нічого не знайдено 😢";
