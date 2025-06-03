@@ -1,41 +1,151 @@
+#suggestions::-webkit-scrollbar {
+  display: none;                   
+}
+
+html {
+  height: 100vh;
+  width: 100%;
+}
+
 body {
   background-color: #121212;
   color: white;
   font-family: Arial, sans-serif;
   text-align: center;
-  padding-top: 50px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-button {
-  background-color: #1db954;
-  color: white;
-  padding: 10px 20px;
+header {
+  background: #292929;
+  height: 60px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.search_container {
+  height: 80%;
+  margin: 0 50px 0 50px;
+  width: 400px;
+}
+
+#query {
+  height: 100%;
+  border-radius: 10px;
   font-size: 18px;
+  width: 100%;
   border: none;
-  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#suggestions {
+  width: 400px;
+  position: absolute;
+  background: #292929;
+  z-index: 1000;
+  cursor: pointer;
+  max-height: 500px; 
+  overflow-y: auto;  
+}
+
+
+#suggestions div {
+  padding: 15px;
+   text-align: left;
+}
+
+#suggestions div:hover {
+  background-color: #707070;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  align-items: end;
+  flex-direction: row;
+}
+
+.music_now{
+  background: #292929;
+  height: 95%;
+  width: 375px;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  padding-left: 25px;
+}
+
+.music_now img{
+  height: 350px;
+  width: 350px;
+  border-radius: 20px;
+  margin-top: 25px;
+}
+
+.music_other{
+  flex-grow: 1;
+  height: 100%;
+}
+
+#track_title {
+  font-size: 24px;
+  margin: 20px 0 0 20px;
+}
+
+#artist {
+  font-size: 18px;
+  margin: 2px 0 16px 20px;
+  color: #707070;
+}
+
+input[type="range"] {
+  width: 350px;
+  margin: 0;
+  background-color: #707070;
+  border-radius: 20px;
+  appearance: inherit;
+}
+
+.time_player{
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.time_player p{
+  margin: 5px 10px 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #707070;
+}
+
+.button_player{
+  width: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-button {
+  width: 50px;
+  height: 50px;
+  background: none;
+  background-image: url('../../img/play-pause.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
   cursor: pointer;
 }
-
-input {
-  padding: 10px;
-  font-size: 18px;
-  width: 300px;
-  margin-right: 10px;
-}
-
- #suggestions {
-      border: 1px solid #071638;
-      max-width: 300px;
-      position: absolute;
-      background: rgb(60, 9, 73);
-      z-index: 1000;
-      cursor: pointer;
-    }
-
-  #suggestions div {
-      padding: 5px;
-    }
-    
-  #suggestions div:hover {
-      background-color: #ff00ea;
-    }

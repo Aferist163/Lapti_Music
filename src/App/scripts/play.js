@@ -13,7 +13,8 @@ async function search() {
 
     if (data.data.length > 0) {
       const track = data.data[0];
-      document.getElementById("result-name").innerText = track.title + " — " + track.artist.name;
+      document.getElementById("track_title").innerText = track.title;
+      document.getElementById("artist").innerText = track.artist.name;
 
       const player = document.getElementById("player");
       player.src = track.preview;
@@ -23,7 +24,7 @@ async function search() {
       cover.src = track.album.cover_medium;
       cover.style.display = 'block';
     } else {
-      document.getElementById("result-name").innerText = "Нічого не знайдено 😢";
+      document.getElementById("track_name").innerText = "Нічого не знайдено 😢";
 
       const cover = document.getElementById("cover");
       cover.style.display = 'none';

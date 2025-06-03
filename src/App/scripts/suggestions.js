@@ -32,7 +32,7 @@ input.addEventListener('input', function () {
     suggestions.innerHTML = '';
     data.data.forEach(track => {
       const div = document.createElement('div');
-      div.textContent = track.title + ' — ' + track.artist.name;
+      div.textContent = track.artist.name + ' — ' + track.title;
       div.onclick = () => {
         selectTrack(track);
         suggestions.style.display = 'none';
@@ -49,7 +49,8 @@ input.addEventListener('input', function () {
 });
 
 function selectTrack(track) {
-  document.getElementById('result-name').innerText = track.title + " — " + track.artist.name;
+  document.getElementById("track_title").innerText = track.title;
+  document.getElementById("artist").innerText = track.artist.name;
 
   const player = document.getElementById("player");
   player.src = track.preview;

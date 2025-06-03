@@ -7,21 +7,40 @@
   <link rel="stylesheet" href="style.css">
   <script src="../scripts/play.js" defer></script>
   <script src="../scripts/suggestions.js" defer></script>
+  <script src="../scripts/player.js" defer></script>
 </head>
 
 <body>
-  <h1>Lapti Music</h1>
 
-  <div style="position: relative; max-width: 300px;">
-    <input id="query" type="text" placeholder="Введи назву пісні" autocomplete="off" />
-    <div id="suggestions" style="display:none;"></div>
+  <header>
+    <div class="search_container">
+      <input id="query" type="text" placeholder="  Введи назву пісні" autocomplete="off" />
+      <div id="suggestions" style="display:none;"> </div>
+    </div>
+    <h1>Lapti Music</h1>
+  </header>
+
+  <div class="main">
+    <div class="music_other">
+
+    </div>
+
+    <div class="music_now">
+      <img id="cover" src="../../img/empty_now.png" alt="cover">
+      <p id="track_title">Track title</p>
+      <p id="artist">Artist</p>
+      <audio id="player"></audio> 
+      <input type="range" id="seek" value="0" step="1">
+      <div class="time_player">
+        <p id="currentTime">00:00</p>
+        <p id="duration">00:00</p>
+      </div>
+      <div class="button_player">
+        <button id="play-pause" class="icon-button"></button>
+      </div>
+    </div>
   </div>
-  <button onclick="search()">🔍 Пошук</button>
-
-  <p id="result-name"></p>
-  <img id="cover" src="" alt="Обкладинка треку" style="max-width: 300px; margin-top: 10px; display: none;">
-  <audio id="player" controls></audio>
-  
+ 
 </body>
 
 </html>
