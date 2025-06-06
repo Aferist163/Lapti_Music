@@ -8,6 +8,7 @@
   <script src="../scripts/play.js" defer></script>
   <script src="../scripts/suggestions.js" defer></script>
   <script src="../scripts/player.js" defer></script>
+  <script src="../scripts/like.js" defer></script>
 </head>
 
 <body>
@@ -17,18 +18,27 @@
       <input id="query" type="text" placeholder="  Введи назву пісні" autocomplete="off" />
       <div id="suggestions" style="display:none;"> </div>
     </div>
-    <h1>Lapti Music</h1>
+    <h1>Lapti Music </h1>
   </header>
 
   <div class="main">
     <div class="music_other">
+      <p>Liked ♥</p>
+      <div class="liked_track">
 
+      </div>
     </div>
 
     <div class="music_now">
       <img id="cover" src="../../img/empty_now.png" alt="cover">
-      <p id="track_title">Track title</p>
-      <p id="artist">Artist</p>
+      <div class="track_info">
+        <div class="tr_ar_info">
+          <p id="track_title">Track title</p>
+          <p id="artist">Artist</p>
+        </div>
+        
+        <img id="like" src="../../img/2.png" alt="like">
+      </div>
       <audio id="player"></audio> 
       <input type="range" id="seek" value="0" step="1">
       <div class="time_player">
